@@ -15,24 +15,24 @@
 </template>
 
 <script>
-import * as types from "../../store/mutation_types.js";
+import * as types from '../../store/mutation_types.js'
 export default {
-  name: "changeYesterday",
-  data() {
-    return {};
+  name: 'changeYesterday',
+  data () {
+    return {}
   },
   methods: {
-    clicked() {
-      const dayTmp = this.$store.state.dayObj;
-      dayTmp.setDate(dayTmp.getDate() - 1);
+    clicked () {
+      const dayTmp = this.$store.state.dayObj
+      dayTmp.setDate(dayTmp.getDate() - 1)
       this.$store.commit(types.SET_DAY_OBJ, {
         newDayObj: dayTmp,
         direction: 0
-      });
-      this.$store.dispatch("setMenu");
+      })
+      this.$store.dispatch('setMenu')
     }
   }
-};
+}
 </script>
 
 <style lang="less">

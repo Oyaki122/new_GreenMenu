@@ -13,47 +13,47 @@
 </template>
 
 <script>
-import Yesterday from "./Dairy/changeYesterday.vue";
-import Tomorrow from "./Dairy/changeTomorrow.vue";
-import MenuWindow from "./Dairy/DairyMenuWindow.vue";
-import * as types from "../store/mutation_types.js";
+import Yesterday from './Dairy/changeYesterday.vue'
+import Tomorrow from './Dairy/changeTomorrow.vue'
+import MenuWindow from './Dairy/DairyMenuWindow.vue'
+import * as types from '../store/mutation_types.js'
 
 export default {
-  name: "DairyMenu",
+  name: 'DairyMenu',
   components: {
     Yesterday,
     Tomorrow,
     MenuWindow
   },
 
-  created: function() {
-    this.$store.commit(types.SET_DAY_OBJ, {});
-    this.$store.dispatch("setMenu");
+  created: function () {
+    this.$store.commit(types.SET_DAY_OBJ, {})
+    this.$store.dispatch('setMenu')
   },
   methods: {
-    dayConvert: function() {
-      var days = ["日", "月", "火", "水", "木", "金", "土"];
-      return days[this.day];
+    dayConvert: function () {
+      var days = ['日', '月', '火', '水', '木', '金', '土']
+      return days[this.day]
     }
   },
   computed: {
-    dayObj: function() {
-      return this.$store.state.dayObj;
+    dayObj: function () {
+      return this.$store.state.dayObj
     },
-    month: function() {
-      return this.$store.state.dayObj.getMonth() + 1;
+    month: function () {
+      return this.$store.state.dayObj.getMonth() + 1
     },
-    date: function() {
-      return this.$store.state.dayObj.getDate();
+    date: function () {
+      return this.$store.state.dayObj.getDate()
     },
-    day: function() {
-      return this.$store.state.dayObj.getDay();
+    day: function () {
+      return this.$store.state.dayObj.getDay()
     },
-    MenuData: function() {
-      return this.$store.state.menuObj;
+    MenuData: function () {
+      return this.$store.state.menuObj
     }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>

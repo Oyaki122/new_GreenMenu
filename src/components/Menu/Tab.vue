@@ -6,21 +6,21 @@
 
 <script>
 export default {
-  name: "Tab",
+  name: 'Tab',
 
-  data() {
+  data () {
     return {
       // WhichSelected: "",
       // thisName: ""
-    };
-  },
-  methods: {
-    clicked() {
-      this.$emit("selectTab", this.thisName);
     }
   },
-  props: ["WhichSelected", "category"]
-};
+  methods: {
+    clicked () {
+      this.$emit('selectTab', this.thisName)
+    }
+  },
+  props: ['WhichSelected', 'category']
+}
 </script>
 
 <style scoped>

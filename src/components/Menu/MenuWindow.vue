@@ -8,9 +8,9 @@
 
 <script>
 export default {
-  name: "MenuWindow",
-  props: ["title", "price"]
-};
+  name: 'MenuWindow',
+  props: ['title', 'price']
+}
 </script>
 
 <style lang="less">
@@ -35,4 +35,3 @@ export default {
   }
 }
 </style>
-

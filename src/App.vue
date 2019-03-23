@@ -11,13 +11,13 @@
 </template>
 
 <script>
-import Menu from "./components/Menu";
-import DairyMenu from "./components/DairyMenu";
+import Menu from './components/Menu'
+import DairyMenu from './components/DairyMenu'
 
 export default {
-  name: "app",
+  name: 'app',
   components: { Menu, DairyMenu }
-};
+}
 </script>
 
 <style lang="less">

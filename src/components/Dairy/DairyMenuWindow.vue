@@ -8,24 +8,24 @@
 
 <script>
 export default {
-  name: "DairyMenuWindow",
+  name: 'DairyMenuWindow',
   props: {
     topic: String
   },
   computed: {
-    topicST: function() {
-      if (this.topic == "lunch") return "慶應ランチ";
-      if (this.topic == "rice") return "ライスバラエティ";
-      else return "Error";
+    topicST: function () {
+      if (this.topic == 'lunch') return '慶應ランチ'
+      if (this.topic == 'rice') return 'ライスバラエティ'
+      else return 'Error'
     },
-    title: function() {
-      return this.$store.getters.getTitle(this.topic);
+    title: function () {
+      return this.$store.getters.getTitle(this.topic)
     },
-    price: function() {
-      return this.$store.getters.getPrice(this.topic);
+    price: function () {
+      return this.$store.getters.getPrice(this.topic)
     }
   }
-};
+}
 </script>
 
 <style lang="less" >
