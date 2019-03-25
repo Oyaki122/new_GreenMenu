@@ -4,7 +4,6 @@ import * as types from './mutation_types'
 import axios from 'axios'
 import dairyFileName from '../components/modules/dairyFileName'
 import csvConvert from '../components/modules/csvConvert'
-import { reject, resolve } from 'q'
 
 Vue.use(Vuex)
 
@@ -35,13 +34,13 @@ const mutations = {
     }
     state.dayObj = dayTmp
   },
-  [types.SET_MENU_OBJ] (state, csv) {
+  menuObjSetter (state, csv) {
     state.menuObj = csv
   },
-  [types.SHOW_TITLE] (state, obj) {
+  titleSetter (state, obj) {
     state.titles = obj
   },
-  [types.SHOW_PRICE] (state, obj) {
+  priceSetter (state, obj) {
     state.prices = obj
   }
 }
@@ -54,8 +53,7 @@ const actions = {
       .get(file)
       .then(res => csvConvert(res.data))
       .then(csv => {
-        context.commit(types.SET_MENU_OBJ, csv)
-        resolve()
+        context.commit('menuObjSetter', csv)
       })
   },
   async setMenu ({ state, commit, dispatch }) {
@@ -64,8 +62,8 @@ const actions = {
       try {
         await dispatch('getCSV')
       } catch (e) {
-        commit(types.SHOW_TITLE, { lunch: 'Error', rice: '' })
-        commit(types.SHOW_PRICE, { lunch: '', rice: '' })
+        commit('titleSetter', { lunch: 'Error', rice: '' })
+        commit('priceSetter', { lunch: '', rice: '' })
         return
       }
     }
@@ -76,8 +74,8 @@ const actions = {
       lunch: menuObj.lunch_price,
       rice: menuObj.rice_price
     }
-    commit(types.SHOW_TITLE, titleTmp)
-    commit(types.SHOW_PRICE, priceTmp)
+    commit('titleSetter', titleTmp)
+    commit('priceSetter', priceTmp)
   }
 }
 
