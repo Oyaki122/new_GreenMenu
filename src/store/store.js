@@ -4,6 +4,7 @@ import * as types from './mutation_types'
 import axios from 'axios'
 import dairyFileName from '../components/modules/dairyFileName'
 import csvConvert from '../components/modules/csv2objConverter'
+import categoryExtractor from '../components/modules/categoryExtractor'
 
 Vue.use(Vuex)
 
@@ -51,7 +52,6 @@ const actions = {
   async getCSV (context) {
     if (!context.state.dayObj) context.commit(types.SET_DAY_OBJ, {})
     const file = dairyFileName(context.state.dayObj)
-
     await axios
       .get(file)
       .then(res => csvConvert(res.data))
@@ -59,7 +59,6 @@ const actions = {
         context.commit('menuObjSetter', csv)
         context.commit('fileNameSetter', file)
       })
-      .then(() => context.commit('fileNameSetter', file))
   },
   async setMenu ({ state, commit, dispatch }) {
     if (!state.dayObj) commit(types.SET_DAY_OBJ, {})
@@ -67,7 +66,8 @@ const actions = {
       try {
         await dispatch('getCSV')
       } catch (e) {
-        commit('titleSetter', { lunch: 'Error', rice: e.response.statusText })
+        console.log(e)
+        commit('titleSetter', { lunch: 'Error', rice: '' })
         commit('priceSetter', { lunch: '', rice: '' })
         return
       }
@@ -93,9 +93,55 @@ const getters = {
   }
 }
 
+const menu = {
+  state: {
+    sort: 0,
+    rowMenus: null,
+    showingMenus: null,
+    categories: null,
+    whichSelected: 'すべて'
+  },
+  mutations: {
+    menusSetter (state, data) {
+      state.rowMenus = data
+    },
+    sortMenus (state, sortCategory) {
+      // console.log(sortCategory)
+      if (sortCategory === -1 || sortCategory === 'すべて') {
+        state.showingMenus = state.rowMenus
+        state.whichSelected = 'すべて'
+        return
+      }
+      state.showingMenus = state.rowMenus.filter(element => {
+        return element.category === sortCategory
+      })
+      state.whichSelected = sortCategory
+    },
+    categoriesSetter (state, categories) {
+      state.categories = categories
+    }
+  },
+  actions: {
+    getCSV ({ state, commit, dispatch }) {
+      axios
+        .get('menu.csv')
+        .then(res => csvConvert(res.data))
+        .then(menuData => {
+          commit('menusSetter', menuData)
+          return categoryExtractor(menuData)
+        })
+        .then(categories => commit('categoriesSetter', categories))
+        .then(() => commit('sortMenus', -1))
+    }
+  }
+}
+
 export default new Vuex.Store({
   state,
   mutations,
   actions,
-  getters
+  getters,
+  modules: {
+    menu: menu
+  }
 })

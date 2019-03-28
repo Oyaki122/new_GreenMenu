@@ -1,6 +1,10 @@
 <template>
-  <div class="Tab" v-on:click="clicked" :class="{selected:WhichSelected===category}">
-    <p>{{category}}</p>
+  <div
+    class="Tab"
+    @click="clicked"
+    :class="{ selected: whichSelected === category }"
+  >
+    <p>{{ category }}</p>
   </div>
 </template>
 
@@ -14,12 +18,18 @@ export default {
       // thisName: ""
     }
   },
-  methods: {
-    clicked () {
-      this.$emit('selectTab', this.thisName)
+  props: ['category'],
+  computed: {
+    whichSelected () {
+      return this.$store.state.menu.whichSelected
     }
   },
-  props: ['WhichSelected', 'category']
+  methods: {
+    clicked () {
+      // console.log(this.category)
+      this.$store.commit('sortMenus', this.category)
+    }
+  }
 }
 </script>
 
