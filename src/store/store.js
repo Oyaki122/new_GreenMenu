@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 import * as types from './mutation_types'
 import axios from 'axios'
 import dairyFileName from '../components/modules/dairyFileName'
-import csvConvert from '../components/modules/csvConvert'
+import csvConvert from '../components/modules/csv2objConverter'
 
 Vue.use(Vuex)
 
@@ -42,19 +42,24 @@ const mutations = {
   },
   priceSetter (state, obj) {
     state.prices = obj
+  },
+  fileNameSetter (state, fileName) {
+    state.fileName = fileName
   }
 }
 const actions = {
   async getCSV (context) {
     if (!context.state.dayObj) context.commit(types.SET_DAY_OBJ, {})
     const file = dairyFileName(context.state.dayObj)
-    context.state.fileName = file
+
     await axios
       .get(file)
       .then(res => csvConvert(res.data))
       .then(csv => {
         context.commit('menuObjSetter', csv)
+        context.commit('fileNameSetter', file)
       })
+      .then(() => context.commit('fileNameSetter', file))
   },
   async setMenu ({ state, commit, dispatch }) {
     if (!state.dayObj) commit(types.SET_DAY_OBJ, {})
@@ -62,7 +67,7 @@ const actions = {
       try {
         await dispatch('getCSV')
       } catch (e) {
-        commit('titleSetter', { lunch: 'Error', rice: '' })
+        commit('titleSetter', { lunch: 'Error', rice: e.response.statusText })
         commit('priceSetter', { lunch: '', rice: '' })
         return
       }
