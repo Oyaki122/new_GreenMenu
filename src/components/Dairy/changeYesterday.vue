@@ -73,7 +73,7 @@ svg {
   width: 20vw;
   height: auto;
 }
-.changeYesterday:click {
+.changeYesterday:active {
   opacity: 0.5;
 }
 </style>
