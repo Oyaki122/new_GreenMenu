@@ -73,7 +73,7 @@ svg {
   width: 20vw;
   height: auto;
 }
-.changeYesterday:hover {
+.changeYesterday:click {
   opacity: 0.5;
 }
 </style>

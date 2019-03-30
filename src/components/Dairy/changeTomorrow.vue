@@ -77,7 +77,7 @@ svg {
   width: 20vw;
   height: auto;
 }
-.changeTomorrow:hover {
+.changeTomorrow:click {
   opacity: 0.5;
 }
 </style>

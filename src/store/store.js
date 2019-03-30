@@ -67,7 +67,11 @@ const actions = {
         await dispatch('getCSV')
       } catch (e) {
         console.log(e)
-        commit('titleSetter', { lunch: 'Error', rice: '' })
+        const errorMessage =
+          e.response.status === 404
+            ? 'メニューが存在しません'
+            : '読み込めませんでした'
+        commit('titleSetter', { lunch: 'Error', rice: errorMessage })
         commit('priceSetter', { lunch: '', rice: '' })
         return
       }

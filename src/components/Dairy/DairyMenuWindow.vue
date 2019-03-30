@@ -23,7 +23,7 @@ export default {
     },
     price: function () {
       return this.$store.getters.getPrice(this.topic)
-        ? '\\' + this.$store.getters.getPrice(this.topic)
+        ? '￥' + this.$store.getters.getPrice(this.topic)
         : ''
     }
   }
