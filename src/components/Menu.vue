@@ -12,6 +12,7 @@
         />
       </section>
     </div>
+    <hr />
     <section class="windowWrapper">
       <MenuWindow
         class="menuwindow"
@@ -93,5 +94,9 @@ h2 {
   display: block;
   width: 300px;
   margin: 20px 10px;
+}
+hr {
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 </style>
