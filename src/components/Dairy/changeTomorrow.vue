@@ -6,9 +6,27 @@
       preserveAspectRatio="xMinYMin meet"
       viewBox="0 0 92 40"
     >
-      <path d="M72,0 L0,0 0,40 72,40 " fill="none" stroke="#e6e6e6" stroke-width="3px"></path>
-      <path d="M72,0 L92,20 72,40 " fill="none" stroke="#e6e6e6" stroke-width="2px"></path>
-      <text x="15" y="30" font-family="游ゴシック" font-size="24" fill="#e6e6e6">翌日</text>
+      <path
+        d="M72,0 L0,0 0,40 72,40 "
+        fill="none"
+        stroke="#f5fcf5"
+        stroke-width="3px"
+      ></path>
+      <path
+        d="M72,0 L92,20 72,40 "
+        fill="none"
+        stroke="#f5fcf5"
+        stroke-width="2px"
+      ></path>
+      <text
+        x="15"
+        y="30"
+        font-family="游ゴシック"
+        font-size="24"
+        fill="#f5fcf5"
+      >
+        翌日
+      </text>
     </svg>
   </div>
 </template>
@@ -42,9 +60,10 @@ export default {
   height: auto;
   position: relative;
   margin-bottom: 1em;
+  user-select: none;
 }
 .button {
-  stroke: #e6e6e6;
+  stroke: black;
 }
 .text {
   position: absolute;
@@ -57,5 +76,8 @@ svg {
   max-height: 40px;
   width: 20vw;
   height: auto;
+}
+.changeTomorrow:hover {
+  opacity: 0.5;
 }
 </style>

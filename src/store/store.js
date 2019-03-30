@@ -110,12 +110,12 @@ const menu = {
       if (sortCategory === -1 || sortCategory === 'すべて') {
         state.showingMenus = state.rowMenus
         state.whichSelected = 'すべて'
-        return
+      } else {
+        state.showingMenus = state.rowMenus.filter(element => {
+          return element.category === sortCategory
+        })
+        state.whichSelected = sortCategory
       }
-      state.showingMenus = state.rowMenus.filter(element => {
-        return element.category === sortCategory
-      })
-      state.whichSelected = sortCategory
     },
     categoriesSetter (state, categories) {
       state.categories = categories

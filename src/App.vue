@@ -5,8 +5,10 @@
       <h1>Green House</h1>
     </header>
 
-    <DairyMenu/>
-    <Menu/>
+    <DairyMenu />
+    <Menu />
+
+    <footer>2019 慶應義塾高等学校生徒会 All Rights Reserved</footer>
   </div>
 </template>
 
@@ -28,8 +30,10 @@ export default {
   margin: 0 auto;
   max-width: 1000px;
   min-height: 100vh;
-  background-color: #4a4a4a;
-  color: #e6e6e6;
+  background-color: #3f453f;
+  color: #f5fcf5;
+  display: flex;
+  flex-direction: column;
 }
 header {
   h2 {
@@ -40,8 +44,16 @@ header {
   h1 {
     font-size: 2.5rem;
     font-weight: 400;
-    color: #3eba2b;
+    text-shadow: 1px 1px 0 #217424, -1px 1px 0 #217424, 1px -1px 0 #217424,
+      -1px -1px 0 #217424;
+    color: #f5fcf5;
     margin: 0 auto;
   }
+}
+footer {
+  bottom: 0;
+  margin: 0 auto;
+  margin-top: auto;
+  text-align: center;
 }
 </style>

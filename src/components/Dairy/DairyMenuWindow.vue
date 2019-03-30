@@ -1,8 +1,8 @@
 <template>
   <div class="frame">
-    <h3>{{topicST}}</h3>
-    <h4>{{title}}</h4>
-    <p>{{price}}</p>
+    <h3>{{ topicST }}</h3>
+    <h4>{{ title }}</h4>
+    <p>{{ price }}</p>
   </div>
 </template>
 
@@ -14,8 +14,8 @@ export default {
   },
   computed: {
     topicST: function () {
-      if (this.topic == 'lunch') return '慶應ランチ'
-      if (this.topic == 'rice') return 'ライスバラエティ'
+      if (this.topic === 'lunch') return '慶應ランチ'
+      if (this.topic === 'rice') return 'ライスバラエティ'
       else return 'Error'
     },
     title: function () {
@@ -23,6 +23,8 @@ export default {
     },
     price: function () {
       return this.$store.getters.getPrice(this.topic)
+        ? '\\' + this.$store.getters.getPrice(this.topic)
+        : ''
     }
   }
 }
@@ -33,7 +35,7 @@ export default {
   position: relative;
   width: 350px;
   height: 140px;
-  border: 2px solid #3eba2b;
+  border: 2px solid #67a869;
   border-radius: 30px;
   margin: 20px 10px;
   h4 {
@@ -57,7 +59,7 @@ export default {
     margin: 0;
     padding: 0 0.5em;
     display: inline;
-    background-color: #4a4a4a;
+    background-color: #3f453f;
     font-size: 1.5rem;
     font-weight: 400;
   }

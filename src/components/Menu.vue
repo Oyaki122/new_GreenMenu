@@ -70,7 +70,7 @@ h2 {
 .windowWrapper {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 .tabWrapper {
@@ -80,5 +80,18 @@ h2 {
   align-items: flex-end;
   overflow: auto;
   white-space: nowrap;
+}
+.windowWrapper::before {
+  content: "";
+  display: block;
+  width: 300px;
+  margin: 20px 10px;
+  order: 1;
+}
+.windowWrapper::after {
+  content: "";
+  display: block;
+  width: 300px;
+  margin: 20px 10px;
 }
 </style>
