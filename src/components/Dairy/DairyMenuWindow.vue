@@ -39,7 +39,7 @@ export default {
   border-radius: 30px;
   margin: 20px 10px;
   h4 {
-    font-weight: 400;
+    font-weight: 300;
     margin: 0 auto;
     margin-top: 20px;
     text-align: center;
@@ -61,7 +61,7 @@ export default {
     display: inline;
     background-color: #3f453f;
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 300;
   }
 }
 </style>

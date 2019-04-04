@@ -1,8 +1,8 @@
 
 <template>
   <div class="MenuWindow">
-    <h4>{{title}}</h4>
-    <p>{{price}}円</p>
+    <h4>{{ title }}</h4>
+    <p>{{ price }}円</p>
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   border-radius: 30px;
   margin: 20px 10px;
   h4 {
-    font-weight: 400;
+    font-weight: 300;
     text-align: center;
     font-size: 28px;
     margin: 20px auto;

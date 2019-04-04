@@ -21,7 +21,7 @@
       <text
         x="30"
         y="30"
-        font-family="游ゴシック"
+        font-family="Noto Sans JP"
         font-size="24"
         fill="#f5fcf5"
       >

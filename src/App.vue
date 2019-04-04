@@ -24,7 +24,8 @@ export default {
 
 <style lang="less">
 #app {
-  font-family: "游ゴシック", "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0 auto;
