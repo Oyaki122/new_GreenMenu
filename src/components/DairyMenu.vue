@@ -1,29 +1,29 @@
 <template>
   <div id="DairyMenu">
     <section class="head">
-      <Yesterday />
+      <back-btn />
       <p class="calendar">{{ month }}/{{ date }}({{ dayConvert() }})</p>
-      <Tomorrow />
+      <next-btn />
     </section>
     <section class="menuWindows">
-      <MenuWindow topic="lunch" />
-      <MenuWindow topic="rice" />
+      <menu-frame topic="lunch" />
+      <menu-frame topic="rice" />
     </section>
   </div>
 </template>
 
 <script>
-import Yesterday from './Dairy/changeYesterday.vue'
-import Tomorrow from './Dairy/changeTomorrow.vue'
-import MenuWindow from './Dairy/DairyMenuWindow.vue'
+import backBtn from './Dairy/backBtn.vue'
+import nextBtn from './Dairy/nextBtn.vue'
+import MenuFrame from './Dairy/DairyFrame.vue'
 import * as types from '../store/mutation_types.js'
 
 export default {
   name: 'DairyMenu',
   components: {
-    Yesterday,
-    Tomorrow,
-    MenuWindow
+    backBtn,
+    nextBtn,
+    MenuFrame
   },
 
   created: function () {
@@ -37,9 +37,6 @@ export default {
     }
   },
   computed: {
-    dayObj: function () {
-      return this.$store.state.dayObj
-    },
     month: function () {
       return this.$store.state.dayObj.getMonth() + 1
     },

@@ -14,7 +14,7 @@
     </div>
     <hr />
     <section class="windowWrapper">
-      <MenuWindow
+      <menu-frame
         class="menuwindow"
         v-for="{ title, price } in menus"
         :title="title"
@@ -26,14 +26,14 @@
 </template>
 
 <script>
-import MenuWindow from './Menu/MenuWindow.vue'
+import MenuFrame from './Menu/MenuFrame.vue'
 import Tab from './Menu/Tab.vue'
 // import csvConvert from "../modules/csvConvert.js";
 
 export default {
   name: 'Menu',
   components: {
-    MenuWindow,
+    MenuFrame,
     Tab
   },
 
